@@ -10,6 +10,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 if (process.env.NODE_ENV === 'production') {
   sentry.init({
     dsn: process.env.REACT_APP_SENTRY_CONFIG_DSN,
@@ -27,9 +29,11 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Router>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Router>,
   document.getElementById('root'),
 );
 

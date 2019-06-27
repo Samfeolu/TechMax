@@ -1,3 +1,8 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.fontFamily": "kurale, Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "Menlo",
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500
 }
