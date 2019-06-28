@@ -1,0 +1,38 @@
+a {
+  color: white;
+  text-decoration-line: none;
+}
+.trip-page {
+  padding: 2em;
+}
+.trip-page h1 {
+  text-align: center;
+}
+
+.trip {
+  border-radius: 2em;
+  margin: 1em;
+  padding: 1em;
+  box-shadow: 0.5em 0.5em 2em #a1aebb;
+}
+.trip-link {
+  margin: auto;
+}
+.link {
+  margin: 2em;
+  border-radius: 1em;
+  color: #eeeeee;
+  font-size: 1em;
+  padding: 0.5em;
+  cursor: pointer;
+  background: #33485c;
+  border: none;
+  box-shadow: 0.2em 0.2em 1em #33485c;
+}
+
+.link:hover {
+  background: rgba(49, 72, 92, 0.6);
+  color: rgb(214, 231, 231);
+  transition: ease-in-out 0.5s;
+  transform: scale(1.2) translate3d(2em);
+}

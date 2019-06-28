@@ -11,8 +11,14 @@ function DetailBar() {
   const [cash, setCash] = useState([]);
   const [billed, setBilled] = useState([]);
   const [trips, setTrips] = useState([]);
+  const [drivers, setDrivers] = useState([]);
 
   useEffect(() => {
+    fetch('api/drivers')
+      .then(res => res.json())
+      .then(res => {
+        setDrivers(res.data);
+      });
     fetch('/api/stats')
       .then(res => res.json())
       .then(({ data: serverData }) => {
@@ -56,14 +62,18 @@ function DetailBar() {
             <Route
               key={trip.tripID}
               path={`/${trip.tripID}`}
-              render={routeProps => <TripInfo {...{ trip, previous, next }} />}
+              render={routeProps => (
+                <TripInfo {...{ trip, previous, next, drivers }} />
+              )}
             />
           );
         })}
         <Route
           exact
           path="/"
-          render={routeProps => <Charts {...{ trips, data, billed, cash }} />}
+          render={routeProps => (
+            <Charts {...{ trips, data, billed, cash, drivers }} />
+          )}
         />
       </div>
     </>

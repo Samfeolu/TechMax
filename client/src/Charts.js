@@ -2,14 +2,14 @@ import React from 'react';
 import Table from './Table';
 import Chart from 'react-google-charts';
 
-function Charts({ data, cash, billed, trips }) {
+function Charts({ data, cash, billed, trips, drivers }) {
+  console.log(drivers);
+
   const options = {
-    title: 'User Information By Gender',
     pieHole: 0,
     is3D: true,
   };
   const cashOptions = {
-    title: 'Trip Information By Cash or Non-Cash',
     pieHole: 0,
     is3D: true,
   };
@@ -21,20 +21,26 @@ function Charts({ data, cash, billed, trips }) {
   return (
     <>
       <div className="flex chart flex-space-evenly">
-        <Chart
-          chartType="PieChart"
-          height="20em"
-          width="20em"
-          data={data}
-          options={options}
-        />
-        <Chart
-          chartType="PieChart"
-          height="20em"
-          width="20em"
-          data={cash}
-          options={cashOptions}
-        />
+        <div className="pie-chart">
+          <h3>Users Gender Information</h3>
+          <Chart
+            chartType="PieChart"
+            height="20em"
+            width="20em"
+            data={data}
+            options={options}
+          />
+        </div>
+        <div className="pie-chart">
+          <h3>Trips Cash Information</h3>
+          <Chart
+            chartType="PieChart"
+            height="20em"
+            width="20em"
+            data={cash}
+            options={cashOptions}
+          />
+        </div>
       </div>
       <div className="flex flex-center-main chart">
         <Chart

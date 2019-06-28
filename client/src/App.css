@@ -30,6 +30,9 @@
 .flex-align-center {
   align-items: center;
 }
+.flex-column {
+  flex-direction: column;
+}
 
 /**********************
 **********************
@@ -135,9 +138,18 @@ header nav img {
   border-radius: 100%;
 }
 
-.chart div {
-  flex-basis: 45%;
+.chart > div {
+  box-shadow: 1em 1em 2em #dae5e9;
+  margin: 3em;
 }
+.chart > div h3 {
+  text-align: center;
+  padding: 1em;
+  margin: 0px;
+  color: #2b4054;
+  border-bottom: #a1bad1 1px solid;
+}
+
 [class='.chart .flex-center-main'] {
   flex-basis: 90%;
 }
@@ -188,16 +200,4 @@ rect {
 .hover:hover {
   background: #9cbcc6;
   color: #f7f7f7;
-}
-
-/**********************
-**********************
-        DETAIL STYLES
-**********************
-**********************/
-.trip-page {
-  padding: 2em;
-}
-.trip-page h1 {
-  text-align: center;
 }
