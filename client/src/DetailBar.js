@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import HeaderSummary from './HeaderSummary';
+import Charts from './Charts';
+import TripInfo from './TripInfo';
+import { Route } from 'react-router-dom';
 
-import Chart from 'react-google-charts';
-const options = {
-  title: 'User Information By Gender',
-  pieHole: 0,
-  is3D: true,
-};
-const cashOptions = {
-  title: 'Trip Information By Cash or Non-Cash',
-  pieHole: 0,
-  is3D: true,
-};
-const billedOptions = {
-  title: 'Trip Information By Amount Billed',
-  pieHole: 0,
-  is3D: true,
-};
 function DetailBar() {
   const [navData, setNavData] = useState({});
   const [data, setData] = useState([]);
   const [cash, setCash] = useState([]);
   const [billed, setBilled] = useState([]);
+  const [trips, setTrips] = useState([]);
 
   useEffect(() => {
     fetch('/api/stats')
@@ -43,40 +31,40 @@ function DetailBar() {
         setBilled([
           ['Billings Type', 'Amount In Naira'],
           ['Billed Total', serverData.billedTotal],
-          ['Non Cash Billed Total', serverData.nonCashBilledTotal],
           ['Cash Billed Total', serverData.cashBilledTotal],
+          ['Non Cash Billed Total', serverData.nonCashBilledTotal],
         ]);
       })
       .catch(err => console.log(err));
+
+    fetch('api/trips')
+      .then(res => res.json())
+      .then(res => setTrips(res.data));
   }, []);
   return (
     <>
       <div className="detailbar">
         <Header />
         <HeaderSummary {...navData} />
-        <div className="flex chart flex-space-evenly">
-          <Chart
-            chartType="PieChart"
-            height="400px"
-            data={data}
-            options={options}
-          />
-          <Chart
-            chartType="PieChart"
-            height="400px"
-            data={cash}
-            options={cashOptions}
-          />
-        </div>
-        <div className="flex flex-center-main chart">
-          <Chart
-            chartType="Bar"
-            height="400px"
-            width="100%"
-            data={billed}
-            options={billedOptions}
-          />
-        </div>
+        {trips.map((trip, index, array) => {
+          //   Asign the previous trip id to the variable 'previous' and /(home) if previous doesnt exist. Do same for next
+          let previous = index === 0 ? '/' : array[index - 1].tripID;
+          let next =
+            index === array.length - 1 ? undefined : array[index + 1].tripID;
+
+          return (
+            <Route
+              key={trip.tripID}
+              path={`/${trip.tripID}`}
+              render={routeProps => <TripInfo {...{ trip, previous, next }} />}
+            />
+          );
+        })}
+        <Route
+          exact
+          path="/"
+          render={routeProps => <Charts {...{ trips, data, billed, cash }} />}
+        />
       </div>
     </>
   );
