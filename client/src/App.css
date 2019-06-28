@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -113,10 +113,11 @@ header {
   background: #eeeeee;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 header a {
   text-decoration-line: none;
-  color: #2b4054;
+  color: #939faa;
 }
 header a:hover {
   text-decoration-line: none;

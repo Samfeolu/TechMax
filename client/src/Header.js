@@ -10,8 +10,8 @@ function Header() {
       <header>
         <nav className="flex flex-end flex-align-center">
           {items.map((item, index) => (
-            <Link to={routes[index]}>
-              <div key={item}>{item}</div>
+            <Link key={item} to={routes[index]}>
+              <div>{item}</div>
             </Link>
           ))}
           <img src={AdminLogo} alt="Admin" />
