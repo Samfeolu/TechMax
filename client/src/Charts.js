@@ -3,8 +3,6 @@ import Table from './Table';
 import Chart from 'react-google-charts';
 
 function Charts({ data, cash, billed, trips, drivers }) {
-  console.log(drivers);
-
   const options = {
     pieHole: 0,
     is3D: true,
@@ -42,17 +40,21 @@ function Charts({ data, cash, billed, trips, drivers }) {
           />
         </div>
       </div>
-      <div className="flex flex-center-main chart">
-        <Chart
-          chartType="Bar"
-          height="400px"
-          width="100%"
-          data={billed}
-          options={billedOptions}
-        />
+      <div className="flex-center-main chart">
+        <div className="bar-chart">
+          <h3>Billings Information</h3>
+          <Chart
+            chartType="Bar"
+            height="400px"
+            width="100%"
+            data={billed}
+            options={billedOptions}
+          />
+        </div>
       </div>
       <div className="table-wrapper">
-        <div>
+        <h3>Trips Information</h3>
+        <div className="table-home">
           <Table {...{ trips }} />
         </div>
       </div>

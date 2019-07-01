@@ -3,8 +3,8 @@ import AdminLogo from './image/bob.jpg';
 import { Link } from 'react-router-dom';
 
 function Header() {
-  const items = ['Home', 'About'];
-  const routes = ['/', 'about'];
+  const items = ['Home', 'About', 'Drivers'];
+  const routes = ['/', 'about', 'drivers'];
   return (
     <>
       <header>

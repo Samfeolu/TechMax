@@ -4,6 +4,7 @@ import HeaderSummary from './HeaderSummary';
 import Charts from './Charts';
 import TripInfo from './TripInfo';
 import { Route } from 'react-router-dom';
+import Trips from './Trips';
 
 function DetailBar() {
   const [navData, setNavData] = useState({});
@@ -22,7 +23,6 @@ function DetailBar() {
     fetch('/api/stats')
       .then(res => res.json())
       .then(({ data: serverData }) => {
-        console.log(serverData);
         setNavData(serverData);
         setData([
           ['Gender', 'Number of People'],
@@ -47,6 +47,8 @@ function DetailBar() {
       .then(res => res.json())
       .then(res => setTrips(res.data));
   }, []);
+  // const femaleTrips = trips.filter(trip=>trip.user.gender === 'female');
+  // const maleTrips = trips.filter(trip=>trip.user.gender === 'male');
   return (
     <>
       <div className="detailbar">
@@ -74,6 +76,11 @@ function DetailBar() {
           render={routeProps => (
             <Charts {...{ trips, data, billed, cash, drivers }} />
           )}
+        />
+        <Route
+          exact
+          path="/trips"
+          render={routeProps => <Trips {...{ trips }} />}
         />
       </div>
     </>

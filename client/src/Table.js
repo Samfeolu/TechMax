@@ -3,7 +3,6 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 function Table({ trips }) {
-  console.log(trips);
   return (
     <>
       <div className="flex flex-space-evenly table-title">
@@ -17,7 +16,11 @@ function Table({ trips }) {
           <Link className="table-item" key={trip.tripID} to={`${trip.tripID}`}>
             <div className="flex flex-space-evenly table-item hover">
               <p>
-                <FaInfoCircle /> Click for more
+                <button className="single-trip-button">
+                  <span className="button-info">
+                    <FaInfoCircle /> View
+                  </span>
+                </button>
               </p>
               <p title={trip.tripID}>{trip.tripID.slice(0, 8) + '...'}</p>
               <p>{trip.user.name}</p>

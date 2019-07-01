@@ -36,74 +36,6 @@
 
 /**********************
 **********************
-        SIDEBAR STYLES
-**********************
-**********************/
-.sidebar {
-  background: #2b4054;
-  flex-basis: 20%;
-  padding: 0.1em;
-  height: auto;
-  color: #f8f8f8;
-}
-.logo {
-  width: 3em;
-  height: 3em;
-  border-radius: 100%;
-  margin: 0em 1em;
-}
-.logo-link {
-  text-decoration: none;
-}
-.logo-name {
-  font-family: 'Russo One';
-  color: #fff;
-}
-
-.Admin {
-  width: 5em;
-  height: 5em;
-  border-radius: 100%;
-  margin: 0em 1em;
-}
-.admin-logo {
-  margin-top: 3em;
-  margin-bottom: 2em;
-}
-.admin-logo p {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
-}
-.overview {
-  text-transform: uppercase;
-  cursor: pointer;
-}
-details > summary::-webkit-details-marker {
-  display: none;
-}
-.left-nav {
-  align-items: baseline;
-  padding: 1em;
-}
-.left-nav:hover {
-  background: #33485c;
-}
-
-details {
-  text-align: center;
-  flex-basis: 80%;
-}
-
-details > p {
-  text-align: left;
-  padding: 0.5em;
-}
-details > p:hover {
-  background: #2b4054;
-}
-
-/**********************
-**********************
         DETAIL STYLES
 **********************
 **********************/
@@ -181,14 +113,33 @@ rect {
   font-size: 2em;
   font-weight: bold;
 }
+.table-home {
+  height: 20em;
+  overflow: scroll;
+  width: 80%;
+
+  margin: auto;
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em 1em #939faa;
+  margin-bottom: 5em;
+}
 .table-title {
   background: #9cbcc6;
-  width: 80%;
   margin: auto;
 }
 .table-item {
-  width: 80%;
   margin: auto;
+}
+.table-wrapper {
+  margin-top: 5em;
+}
+.table-wrapper h3 {
+  text-align: center;
+  padding: 1em;
+  margin: auto;
+  margin-bottom: 1em;
+  width: 80%;
+  color: #2b4054;
 }
 .table-wrapper div > p {
   flex-basis: 20%;
@@ -200,4 +151,19 @@ rect {
 .hover:hover {
   background: #9cbcc6;
   color: #f7f7f7;
+}
+.hover {
+  border-bottom: #939faa 1px solid;
+}
+.single-trip-button {
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  border: none;
+  background: #607b94;
+  box-shadow: 0.2em 0.2em 1em #dae5e9;
+  cursor: pointer;
+}
+.button-info {
+  font-size: 1.3em;
+  color: rgb(226, 231, 223);
 }

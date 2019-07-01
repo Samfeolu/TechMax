@@ -2,6 +2,8 @@ import React from 'react';
 import { MdHome } from 'react-icons/md';
 import { MdExpandMore } from 'react-icons/md';
 import { FaTable } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import './DashBoardNav.css';
 
 function DashBoardNav() {
   const items = ['Gender', 'Trips', 'Billings'];
@@ -23,7 +25,9 @@ function DashBoardNav() {
         <details>
           <summary className="overview"> Tables</summary>
           {tables.map(table => (
-            <p key={table}>{table}</p>
+            <Link key={table} to={table}>
+              <div>{table}</div>
+            </Link>
           ))}
         </details>
         <MdExpandMore />
