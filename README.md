@@ -3,15 +3,36 @@
 Run the server with
 
 ```bash
-yarn install
+yarn
 yarn start
 ```
+
+Or if you use npm
+
+```bash
+npm install
+npm start
+```
+
+---
 
 Then run the client
 
 ```bash
-yarn client:start
+cd client
+yarn
+yarn start
 ```
+
+Or if you use npm
+
+```bash
+cd client
+npm install
+npm start
+```
+
+---
 
 The server part of this system is already designed and exposes a set of REST endpoints via the `/api` route and a GraphQL endpoint.
 

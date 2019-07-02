@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import { getTrips, getDrivers, getDriver, getTrip } from '../controllers/index';
+import {
+  getTrips,
+  getDrivers,
+  getDriver,
+  getTrip,
+  getVehicle,
+} from '../controllers/index';
 
 const router = Router();
 
@@ -41,7 +47,7 @@ router.get('/driver/:driverID', (req, res) => {
 
 router.get('/vehicle/:vehicleID', (req, res) => {
   try {
-    const vehicle = getDriver(req.params.vehicleID);
+    const vehicle = getVehicle(req.params.vehicleID);
 
     res.status(200).json({ data: vehicle });
   } catch {

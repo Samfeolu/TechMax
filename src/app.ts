@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
 import path from 'path';
+import fs from 'fs';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 
@@ -48,6 +49,16 @@ app.use(
     graphiql: true,
   }),
 );
+
+const clientDirectory = path.join(__dirname, '../', 'client/build');
+
+if (fs.existsSync(clientDirectory) && process.env.NODE_ENV !== 'development') {
+  app.use(express.static(clientDirectory));
+
+  app.get('/*', (_req, res) => {
+    res.sendFile(path.join(clientDirectory, 'index.html'));
+  });
+}
 
 // catch 404 and forward to error handler
 app.use(function(
