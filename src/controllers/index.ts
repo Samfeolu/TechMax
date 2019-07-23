@@ -31,7 +31,7 @@ export function getTrip(tripID: string) {
     throw new Error('Trip not found');
   }
 
-  return trip;
+  return trip[0];
 }
 
 export function getDriver(driverID: string) {
